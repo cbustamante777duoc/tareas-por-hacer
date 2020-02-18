@@ -16,7 +16,9 @@ switch (comando) {
     break;
 
     case 'actualizar':
-        console.log("actualizar nota");
+        let actualizado = porHacer.actualizar(argv.descripcion, argv.completado);
+        console.log(actualizado);
+
     break;
 
     case 'listar':

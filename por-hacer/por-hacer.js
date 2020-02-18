@@ -38,7 +38,6 @@ const getListado = () =>{
 }
 
 
-
 //funcion que sirve para crear una nota
 const crear = (descripcion) => {
 
@@ -59,7 +58,31 @@ const crear = (descripcion) => {
 }
 
 
+const actualizar = (descripcion, completado=true) =>{
+
+    cargarDb();
+
+    //for interno
+    let index = listadoPorHacer.findIndex(tarea => tarea.descripcion === descripcion);
+       // return tarea.descripcion === descripcion;
+
+       //cualquier numero mayor a 0 significa que encontro algo
+       if (index >= 0) {
+           // esto va hacer que el elemento encontrado va a hacer igual al elemento que envia el usuario
+           //osea si el usuario manda un true esta como true
+           listadoPorHacer[index].completado = completado;
+           guardarDb();
+           return true;
+       }else{
+           return false;
+       }
+
+
+
+}
+
 module.exports = {
     crear,
-    getListado
+    getListado,
+    actualizar
 }
