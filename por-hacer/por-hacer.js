@@ -21,14 +21,20 @@ const cargarDb = () =>{
     try {
             //node lo serializa por nosotro
         listadoPorHacer = require('../db/data.json');
-        console.log(listadoPorHacer);
+        
     } catch (error) {
         //este formato es valido sin no hay nada en json
         listadoPorHacer = [];
     }
-    
 
-   
+}
+
+const getListado = () =>{
+    //cargando el metodo cargarDb 
+    cargarDb();
+    //retornado el arreglo 
+    return listadoPorHacer;
+
 }
 
 
@@ -54,5 +60,6 @@ const crear = (descripcion) => {
 
 
 module.exports = {
-    crear
+    crear,
+    getListado
 }

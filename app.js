@@ -1,4 +1,6 @@
 const argv = require('./config/yargs').argv;
+const color = require('colors');
+
 
 const porHacer = require('./por-hacer/por-hacer');
 
@@ -18,7 +20,15 @@ switch (comando) {
     break;
 
     case 'listar':
-        console.log("listar nota");
+        let listado = porHacer.getListado()
+        
+        for(let tarea of listado){
+            console.log(".-.-.-.-.-.-.-.-.-.-.-".green);
+            console.log("descripcion: "+tarea.descripcion.yellow);
+            console.log("estado:"+`${tarea.completado}`.yellow);
+
+
+        }
     break;
 
     default:
