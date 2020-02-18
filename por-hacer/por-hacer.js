@@ -2,6 +2,7 @@ const fs = require('fs');
 
 let listadoPorHacer = [];
 
+//guardar en un archivo json
 const guardarDb = () =>{
     //pasar el arreglo a un json
     let data = JSON.stringify(listadoPorHacer);
@@ -14,8 +15,29 @@ const guardarDb = () =>{
     })
 }
 
+// metodo que carga un listado del json
+const cargarDb = () =>{
+
+    try {
+            //node lo serializa por nosotro
+        listadoPorHacer = require('../db/data.json');
+        console.log(listadoPorHacer);
+    } catch (error) {
+        //este formato es valido sin no hay nada en json
+        listadoPorHacer = [];
+    }
+    
+
+   
+}
+
+
+
 //funcion que sirve para crear una nota
 const crear = (descripcion) => {
+
+   cargarDb();
+
     let porHacer = {
         descripcion,
         completado: false
