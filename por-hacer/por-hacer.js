@@ -76,7 +76,28 @@ const actualizar = (descripcion, completado=true) =>{
        }else{
            return false;
        }
+}
 
+const borrar = (descripcion) => {
+    cargarDb();
+
+    //esta va a sacar al elemento de la lista
+   let nuevoListado = listadoPorHacer.filter(tarea => {
+       return tarea.descripcion !== descripcion
+   });
+
+   // si el listdo nuevo es igual al anterio significa que no lo ha borrado
+    if (listadoPorHacer.length === nuevoListado.length) {
+        //  if(nuevoListado.length === listadoPorHacer.length){
+        return false;
+    }
+    else {
+
+        // la nueva lista va a replazar a la vieja lista
+        listadoPorHacer = nuevoListado;
+        guardarDb();
+        return true;
+    }
 
 
 }
@@ -84,5 +105,6 @@ const actualizar = (descripcion, completado=true) =>{
 module.exports = {
     crear,
     getListado,
-    actualizar
+    actualizar,
+    borrar
 }

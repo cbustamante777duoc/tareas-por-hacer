@@ -24,6 +24,13 @@ const argv = require('yargs')
                            desc:'marca como completada las notas '
                        }
                     })
+                    .command('borrar', 'borrar nota',{
+                        descripcion:{
+                            demand:true,
+                            alias: 'd',
+                            desc:'descripcion de la tarea por hacer'
+                       }
+                    })
                     .help()
                     .argv;
 
